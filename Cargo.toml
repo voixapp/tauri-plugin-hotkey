@@ -1,0 +1,23 @@
+[package]
+name = "tauri-plugin-hotkey"
+version = "0.1.0"
+authors = [ "Voix Team" ]
+description = ""
+edition = "2021"
+rust-version = "1.77.2"
+exclude = ["/examples", "/dist-js", "/guest-js", "/node_modules"]
+links = "tauri-plugin-hotkey"
+
+[lib]
+name = "tauri_plugin_hotkey"
+path = "src/lib.rs"
+
+[dependencies]
+tauri = { version = "2.2.5" }
+serde = "1.0.217"
+thiserror = "2.0.11"
+device_query = "3.0.0"
+log = "0.4.25"
+
+[build-dependencies]
+tauri-plugin = { version = "2.0.4", features = ["build"] }
