@@ -1,8 +1,13 @@
 {
-  "name": "@voixchat/tauri-plugin-hotkey",
+  "name": "@voixapp/tauri-plugin-hotkey",
   "version": "0.1.0",
   "author": "Voix Team",
   "description": "Plugin allows to receive hotkey press and release events",
+  "repository": {
+    "url": "https://github.com/voixapp/tauri-plugin-hotkey",
+    "type": "git"
+  },
+  "license": "MIT",
   "type": "module",
   "types": "./dist-js/index.d.ts",
   "main": "./dist-js/index.cjs",
