@@ -1,6 +1,6 @@
 {
   "name": "@voixapp/tauri-plugin-hotkey",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "author": "Voix Team",
   "description": "Plugin allows to receive hotkey press and release events",
   "repository": {
@@ -27,7 +27,8 @@
     "pretest": "pnpm build"
   },
   "dependencies": {
-    "@tauri-apps/api": "^2.0.0"
+    "@tauri-apps/api": "^2.0.0",
+    "bumpp": "^10.1.0"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^11.1.6",
