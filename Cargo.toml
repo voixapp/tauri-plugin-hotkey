@@ -15,6 +15,10 @@ Tauri Plugin to receive hotkey press and release OS events.
 [package.metadata]
 owners = ["voixapp"]
 
+[package.metadata.docs.rs]
+rustc-args = ["--cfg", "docsrs"]
+rustdoc-args = ["--cfg", "docsrs"]
+
 [lib]
 name = "tauri_plugin_hotkey"
 path = "src/lib.rs"
