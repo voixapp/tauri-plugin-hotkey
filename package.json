@@ -1,6 +1,6 @@
 {
   "name": "@voixapp/tauri-plugin-hotkey",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "author": "Voix Team",
   "description": "Plugin allows to receive hotkey press and release events",
   "repository": {
