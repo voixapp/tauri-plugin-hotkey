@@ -1,45 +1,20 @@
 use std::collections::HashMap;
-use std::iter::Map;
-use std::sync::{Arc, LockResult, Mutex, RwLock};
+use std::sync::Mutex;
 use std::thread::spawn;
 use std::time::Duration;
-use device_query::{mouse_state, CallbackGuard, DeviceEvents, DeviceEventsHandler, KeyboardCallback, Keycode, MouseButton};
-use log::info;
-
+use device_query::{DeviceEvents, DeviceEventsHandler, Keycode, MouseButton};
 use tauri::{
-    ipc::Channel,
     plugin::{Builder, TauriPlugin},
-    AppHandle, Manager, Runtime, State as TauriState,
+    Manager, Runtime,
 };
 
 pub use models::*;
-
-// #[cfg(desktop)]
-// mod desktop;
-// #[cfg(mobile)]
-// mod mobile;
 
 mod commands;
 mod error;
 mod models;
 
 pub use error::{Error, Result};
-
-// #[cfg(desktop)]
-// use desktop::Hotkey;
-#[cfg(mobile)]
-use mobile::Hotkey;
-
-/// Extensions to [`tauri::App`], [`tauri::AppHandle`] and [`tauri::Window`] to access the hotkey APIs.
-// pub trait HotkeyExt<R: Runtime> {
-//     fn hotkey(&self) -> &Hotkey<R>;
-// }
-//
-// impl<R: Runtime, T: Manager<R>> crate::HotkeyExt<R> for T {
-//     fn hotkey(&self) -> &Hotkey<R> {
-//         self.state::<Hotkey<R>>().inner()
-//     }
-// }
 
 pub struct StateInner {
     pub shortcuts: HashMap<String, Shortcut>,
@@ -54,15 +29,7 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
             commands::register, commands::unregister, commands::unregister_all, commands::is_registered,
         ])
         .setup(|app, _api| {
-            let mut shortcuts = HashMap::new();
-            // shortcuts.insert(
-            //     String::from("Test 1"),
-            //     Shortcut::new(vec![KeyType::Keyboard(Keycode::Command), KeyType::Keyboard(Keycode::V)])
-            // );
-            // shortcuts.insert(
-            //     String::from("Test 2"),
-            //     Shortcut::new(vec![KeyType::Keyboard(Keycode::LShift), KeyType::Mouse(3)])
-            // );
+            let shortcuts = HashMap::new();
 
             app.manage(State::new(StateInner { shortcuts }));
 

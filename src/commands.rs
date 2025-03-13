@@ -2,19 +2,16 @@ use crate::models::*;
 use crate::State;
 use tauri::{
     ipc::Channel,
-    plugin::{Builder as PluginBuilder, TauriPlugin},
-    AppHandle, Manager, Runtime, State as TauriState,
+    State as TauriState,
 };
 
 #[tauri::command]
-pub fn register/*<R: Runtime>*/(
-    // app: AppHandle<R>,
+pub fn register(
     state: TauriState<'_, State>,
     name: String,
     keys: Vec<String>,
     channel: Channel<ShortcutEvent>,
 ) {
-    // let mut state = app.state::<State>();
     match state.lock() {
         Ok(mut inner) => {
             let shortcut = Shortcut::new(
@@ -23,45 +20,43 @@ pub fn register/*<R: Runtime>*/(
             );
             inner.shortcuts.insert(name.clone(), shortcut);
         }
-        Err(e) => {
+        Err(_e) => {
             // todo error
         }
     }
 }
 
 #[tauri::command]
-pub fn unregister/*<R: Runtime>*/(
-    // app: AppHandle<R>,
+pub fn unregister(
     state: tauri::State<'_, State>,
     name: String,
 ) {
-    // let mut state = app.state::<State>();
     match state.lock() {
         Ok(mut inner) => {
             inner.shortcuts.remove(&name);
         }
-        Err(e) => {
+        Err(_e) => {
             // todo error
         }
     }
 }
 
 #[tauri::command]
-pub fn unregister_all/*<R: Runtime>*/(
+pub fn unregister_all(
     state: tauri::State<'_, State>,
 ) {
     match state.lock() {
         Ok(mut inner) => {
             inner.shortcuts.clear();
         }
-        Err(e) => {
+        Err(_e) => {
             // todo error
         }
     }
 }
 
 #[tauri::command]
-pub fn is_registered/*<R: Runtime>*/(
+pub fn is_registered(
     state: tauri::State<'_, State>,
     name: String,
 ) -> bool {

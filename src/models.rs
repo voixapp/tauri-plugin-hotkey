@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 use std::str::FromStr;
-use device_query::{mouse_state, CallbackGuard, Keycode};
+use device_query::{mouse_state, Keycode};
 use serde::{Deserialize, Serialize};
 use tauri::ipc::Channel;
 

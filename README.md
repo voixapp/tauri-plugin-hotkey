@@ -1,6 +1,6 @@
 # Tauri Plugin Hotkey
 
-Plugin allows to receive hotkey press and release events.
+Tauri Plugin to receive hotkey press and release OS events.
 
 
 This plugin was made because of incompatible flow of Global Shortcut:
