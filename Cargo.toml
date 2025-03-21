@@ -3,7 +3,7 @@ name = "tauri-plugin-hotkey"
 version = "0.1.11"
 authors = [ "VoixApp Team <team@voix.su>" ]
 edition = "2021"
-rust-version = "1.84.1"
+rust-version = "1.83.0"
 exclude = ["/examples", "/dist-js", "/guest-js", "/node_modules"]
 links = "tauri-plugin-hotkey"
 license = "MIT"
@@ -18,6 +18,13 @@ owners = ["voixapp"]
 [package.metadata.docs.rs]
 rustc-args = ["--cfg", "docsrs"]
 rustdoc-args = ["--cfg", "docsrs"]
+
+[package.metadata.platforms.support]
+windows = { level = "full", notes = "" }
+linux = { level = "full", notes = "" }
+macos = { level = "full", notes = "" }
+android = { level = "none", notes = "" }
+ios = { level = "none", notes = "" }
 
 [lib]
 name = "tauri_plugin_hotkey"
