@@ -1,6 +1,6 @@
 [package]
 name = "tauri-plugin-hotkey"
-version = "0.1.11"
+version = "0.1.12"
 authors = [ "VoixApp Team <team@voix.su>" ]
 edition = "2021"
 rust-version = "1.83.0"
